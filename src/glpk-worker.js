@@ -18,6 +18,12 @@ self.onmessage = function (evt) {
             case 'write':
                 postMessage({ res: glpk.write(lp) });
                 break;
+            case 'writesensibilityToText':
+                postMessage({ res: glpk.writesensibilityToText(lp) });
+                break;
+            case 'writesensibilityToJson':
+                postMessage({ res: glpk.write(lp) });
+                break;
             default:
                 break;
         }

@@ -1,0 +1,40 @@
+{
+  "name": "test4",
+  "objective": {
+    "direction": 2,
+    "vars": [
+      {"name": "X1", "coef": 1100},
+      {"name": "X2", "coef": 1400},
+      {"name": "X3", "coef": 1500}
+    ]
+  },
+  "subjectTo": [
+    {
+      "name": "c1",
+      "vars": [
+        {"name": "X1", "coef": 1},
+        {"name": "X2", "coef": 1},
+        {"name": "X3", "coef": 1}
+      ],
+      "bnds": { "type": 5,  "lb": 340,  "ub": 340}
+    },
+    {
+      "name": "c2",
+      "vars": [
+        {"name": "X1", "coef": 2},
+        {"name": "X2", "coef": 3},
+        {"name": "X3", "coef": 1}
+      ],
+      "bnds": { "type": 4,  "lb": 900,  "ub": 2400}
+    },
+    {
+      "name": "c3",
+      "vars": [
+        {"name": "X1", "coef": 1},
+        {"name": "X2", "coef": 2},
+        {"name": "X3", "coef": 3}
+      ],
+      "bnds": { "type": 5,  "lb": 560,  "ub": 560}
+    }
+  ]
+}

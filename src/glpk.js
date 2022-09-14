@@ -48,7 +48,11 @@ const glpk = function (wasmBinary=null) {
         solve_lp = cwrap('solve_lp', 'number', ['number', 'number']),
         solve_mip = cwrap('solve_mip', 'number', ['number', 'number', 'number', 'number']),
         get_glp_smcp = cwrap('get_glp_smcp', 'number', ['number', 'number', 'number']),
-        solve_lp_itlim = cwrap('solve_lp_itlim', 'number', ['number', 'number']);
+        solve_lp_itlim = cwrap('solve_lp_itlim', 'number', ['number', 'number']),
+        glp_print_ranges = cwrap('glp_print_ranges', 'number', ['number', 'number', '[number]', 'number','string']),
+        glp_get_json_ranges = cwrap('glp_get_json_ranges', 'number', ['number', 'number', '[number]', 'number','string']),
+        glp_bf_exists = cwrap('glp_bf_exists','number',['number']),
+        glp_factorize = cwrap('glp_factorize','number',['number']);
 
     const DBL_MAX = Number.MAX_VALUE;
     const INT_MAX = 2147483647;
@@ -169,6 +173,7 @@ const glpk = function (wasmBinary=null) {
                 const call = opt.cb.call;
                 const each = +opt.cb.each > 0 ? +opt.cb.each : 1;
                 const glp_smcp = get_glp_smcp(each, opt.msglev, opt.tmlim);
+
                 while (1) {
                     solve_lp_itlim(P, glp_smcp, each);
                     const status = glp_get_status(P);
@@ -176,7 +181,8 @@ const glpk = function (wasmBinary=null) {
                         status,
                         z: glp_get_obj_val(P),
                         vars: get_vars(P),
-                        dual: get_dual(P)
+                        dual: get_dual(P),
+                        rang : rang
                     };
                     call(_ret);
                     if (status === this.GLP_OPT || status === this.GLP_NOFEAS || status === this.GLP_UNBND || status === this.GLP_UNDEF) {
@@ -185,6 +191,8 @@ const glpk = function (wasmBinary=null) {
                         ret.z = _ret.z;
                         ret.vars = _ret.vars;
                         ret.dual = _ret.dual;
+                        ret.sensitivity = this.writesensibilityToJson(P);
+                        ret.sens_text = this.writesensibilityToText(P);
                         break;
                     }
                 }
@@ -194,6 +202,9 @@ const glpk = function (wasmBinary=null) {
                 ret.z = glp_get_obj_val(P);
                 ret.vars = get_vars(P);
                 ret.dual = get_dual(P);
+                ret.sensitivity = this.writesensibilityToJson(P);
+
+                ret.sens_text = this.writesensibilityToText(P);
             }
         }
 
@@ -260,8 +271,37 @@ const glpk = function (wasmBinary=null) {
         return file;
     };
 
-    this.solve = (lp, opt) => {
+    this.writesensibilityToJson = lp => {
+        const name = 'sens_bnds.lp';
+        /* write bounds sensitivity information */
+        if (glp_get_status(lp) == this.GLP_OPT && !glp_bf_exists(lp))
+            glp_factorize(lp);
+        const test = glp_get_json_ranges(lp, 0, null, 0, name);
 
+        const file = FS.readFile(name, { encoding: 'utf8' });
+        FS.unlink(name);
+
+        // bidouille pour elever la derniere ','
+        let json = file.substring(0,file.length-2);
+        json = json + "]";
+        console.log("Sensibility : " +json);
+        return JSON.parse(json);
+    };
+
+    this.writesensibilityToText = lp => {
+        const name = 'sens_bnds.lp';
+        /* write bounds sensitivity information */
+        if (glp_get_status(lp) == this.GLP_OPT && !glp_bf_exists(lp))
+            glp_factorize(lp);
+        const test = glp_print_ranges(lp, 0, null, 0, name);
+        const file = FS.readFile(name, { encoding: 'utf8' });
+        FS.unlink(name);
+
+        return file;
+    };
+
+    this.solve = (lp, opt) => {
+        console.log("xxxxxxxxxx : ");
         const lp_ = typeof lp === 'string' ? JSON.parse(lp) : lp;
         const opt_ = Number.isInteger(opt) ? { msglev: opt } : opt || lp.options || {};
 
@@ -281,7 +321,8 @@ const glpk = function (wasmBinary=null) {
                     vars: {},
                     dual: {},
                     z: null,
-                    status: 1
+                    status: 1,
+                    sensitivity:''
                 }
             },
             start = new Date().getTime();

@@ -49,6 +49,10 @@ EMCC_FLAGS += -s EXPORTED_FUNCTIONS="[ \
 	'_glp_free_env', \
 	'_glp_write_lp', \
 	'_glp_simplex', \
+	'_glp_print_ranges', \
+	'_glp_get_json_ranges', \
+	'_glp_bf_exists', \
+	'_glp_factorize', \
 	'_free', \
 	'_malloc' \
 	]"

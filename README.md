@@ -131,6 +131,8 @@ interface Result {
         z: number;
         vars: {[key:string]: number};
         dual?: { [key: string]: number }; /* simplex only */
+        sensibility? : string; /* sensiblity (json format) */
+        sens_text? : string;  /* sensiblity (text format) */
     };
 }
 

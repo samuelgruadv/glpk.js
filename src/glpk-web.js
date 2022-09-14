@@ -61,6 +61,8 @@ const glpk = function (wkr, flags) {
     };
 
     this.write = lp => post({ cmd: 'write', lp });
+    this.writesensibilityToJson = lp => post({ cmd: 'writesensibilityToJson', lp });
+    this.writesensibilityToText = lp => post({ cmd: 'writesensibilityToText', lp });
     this.terminate = () => wkr.terminate();
 
 };

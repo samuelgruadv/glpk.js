@@ -40,6 +40,8 @@ interface Result {
         z: number;
         vars: {[key:string]: number};
         dual?: { [key: string]: number }; /* simplex only */
+        sensibility? : string;
+        sens_text? : string;
     };
 }
 
@@ -73,6 +75,8 @@ interface GLPK {
 
     version: string;  /* GLPK version */
     write(lp: LP): string; /* writes problem data in CPLEX LP */
+    writesensibilityToJson(lp: LP): string; /* writes sensibility data */
+    writesensibilityToText(lp: LP): string; /* writes sensibility data */
     solve(lp: LP, options?: number | Options): Result /* options is either a glp message level or an options obj */
 }
 

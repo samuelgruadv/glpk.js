@@ -23,14 +23,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jvail/glpk.js.git"
+    "url": "git+https://github.com/samuelgruadv/glpk.js.git"
   },
-  "author": "Jan Vaillant",
+  "author": "Samuel Gru",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/jvail/glpk.js/issues"
+    "url": "https://github.com/samuelgruadv/glpk.js/issues"
   },
-  "homepage": "https://github.com/jvail/glpk.js#readme",
+  "homepage": "https://github.com/samuelgruadv/glpk.js#readme",
   "dependencies": {
     "pako": "^2.0.4"
   },

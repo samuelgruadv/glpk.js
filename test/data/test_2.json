@@ -1,0 +1,58 @@
+{
+  "name": "test2",
+  "objective": {
+    "direction": 1,
+    "vars": [
+      {"name": "X1", "coef": 15},
+      {"name": "X2", "coef": 22},
+      {"name": "X3", "coef": 18},
+      {"name": "X4", "coef": 21}
+    ]
+  },
+  "subjectTo": [
+    {
+      "name": "c1",
+      "vars": [
+        {"name": "X1", "coef": 1},
+        {"name": "X2", "coef": 1},
+        {"name": "X3", "coef": 1},
+        {"name": "X4", "coef": 1}
+      ],
+      "bnds": { "type": 5,  "lb": 1,  "ub": 1}
+    },
+    {
+      "name": "c2",
+      "vars": [
+        {"name": "X1", "coef": 20},
+        {"name": "X2", "coef": 15},
+        {"name": "X3", "coef": 12},
+        {"name": "X4", "coef": 25}
+      ],
+      "bnds": { "type": 3,   "ub": 18}
+    },
+    {
+      "name": "c3",
+      "vars": [
+        {"name": "X1", "coef": 40},
+        {"name": "X2", "coef": 18},
+        {"name": "X3", "coef": 25},
+        {"name": "X4", "coef": 12}
+      ],
+      "bnds": { "type": 2,  "lb": 20}
+    },
+    {
+      "name": "c7",
+      "vars": [
+        {"name": "X1", "coef": 5},
+        {"name": "X2", "coef": 10},
+        {"name": "X3", "coef": 12},
+        {"name": "X4", "coef": 5}
+      ],
+      "bnds": { "type": 3,  "ub": 8}
+    }
+  ],
+  "bounds": [
+    { "name": "X2", "type": 2,  "lb": 0.1,  "ub": 0},
+    { "name": "X4", "type": 2,  "lb": 0.1,  "ub": 0}
+  ]
+}

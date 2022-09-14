@@ -1,0 +1,485 @@
+{
+  "name": "LP",
+  "objective": {
+    "direction": 1,
+    "vars": [
+      {"name": "Ens_Mais", "coef": 150},
+      {"name": "Ens_Herbe", "coef": 220},
+      {"name": "Paille_Ble", "coef": 100},
+      {"name": "Mais", "coef": 300},
+      {"name": "Orge", "coef": 225},
+      {"name": "Ble", "coef": 225},
+      {"name": "Pois", "coef": 300},
+      {"name": "Colza", "coef": 290},
+      {"name": "Soja","coef": 400},
+      {"name": "CaCo3","coef": 50},
+      {"name": "PhMoBica","coef": 500}
+    ]
+  },
+  "subjectTo": [
+    {
+      "name": "c1_UEL",
+      "vars": [
+        {"name": "Ens_Mais", "coef": 1.009322247},
+        {"name": "Ens_Herbe", "coef": 1.070657337},
+        {"name": "Paille_Ble", "coef": 1.45},
+        {"name": "Mais", "coef": 0.280734356184005},
+        {"name": "Orge", "coef": 0.280734356184005},
+        {"name": "Ble", "coef": 0.280734356184005},
+        {"name": "Pois", "coef": 0.280734356184005},
+        {"name": "Colza", "coef": 0.280734356184005},
+        {"name": "Soja", "coef": 0.280734356184005},
+        {"name": "CaCo3","coef": 0.280734356184005},
+        {"name": "PhMoBica","coef": 0.280734356184005}
+      ],
+      "bnds": { "type": 4,  "lb": 17.3455730578088,  "ub": 17.4455730578088}
+    },
+    {
+      "name": "c2_UFL",
+      "vars": [
+        {"name": "Ens_Mais", "coef": 0.917170473294015},
+        {"name": "Ens_Herbe", "coef": 0.853776950655409},
+        {"name": "Paille_Ble", "coef": 0.495517664928149},
+        {"name": "Mais", "coef": 1.16544641581794},
+        {"name": "Orge", "coef": 1.04304806737475},
+        {"name": "Ble", "coef": 1.11937072948127},
+        {"name": "Pois", "coef": 1.13823866653728},
+        {"name": "Colza", "coef": 0.920264033127237},
+        {"name": "Soja", "coef": 1.11673675857062}
+      ],
+      "bnds": { "type": 4,  "lb": 20.6540627227543,  "ub": 999999}
+    },
+    {
+      "name": "c3_PDI",
+      "vars": [
+        {"name": "Ens_Mais", "coef": 64.1337504137345},
+        {"name": "Ens_Herbe", "coef": 82.1172446533567},
+        {"name": "Paille_Ble", "coef": 51.1666634201429},
+        {"name": "Mais", "coef": 97.8744080320921},
+        {"name": "Orge", "coef": 90.6150097082653},
+        {"name": "Ble", "coef": 93.6246188226264},
+        {"name": "Pois", "coef": 103.222676204325},
+        {"name": "Colza", "coef": 157.422296008159},
+        {"name": "Soja", "coef": 256.31932496764}
+      ],
+      "bnds": { "type": 4,  "lb": 2631.64407341498,  "ub": 999999}
+    },
+    {
+      "name": "c4_BPR",
+      "vars": [
+        {"name": "Ens_Mais", "coef": -34.3827696840259},
+        {"name": "Ens_Herbe", "coef": 0.881472740605506},
+        {"name": "Paille_Ble", "coef": -58.6634812365092},
+        {"name": "Mais", "coef": -57.141837777742},
+        {"name": "Orge", "coef": -27.7088905055697},
+        {"name": "Ble", "coef": -18.1123602308513},
+        {"name": "Pois", "coef": 78.3458999416625},
+        {"name": "Colza", "coef": 152.76397951315},
+        {"name": "Soja", "coef": 215.810185893946},
+        {"name": "CaCo3", "coef": -14.2},
+        {"name": "PhMoBica", "coef": -14.2},
+        {"name": "S_BPR", "coef": -1}
+      ],
+      "bnds": { "type": 5,  "lb": 0,  "ub": 0}
+    },
+    {
+      "name": "c7_MAT",
+      "vars": [
+        {"name": "Ens_Mais", "coef": 78.29302259},
+        {"name": "Ens_Herbe", "coef": 134.2917636},
+        {"name": "Paille_Ble", "coef": 35},
+        {"name": "Mais", "coef": 89},
+        {"name": "Orge", "coef": 112},
+        {"name": "Ble", "coef": 126},
+        {"name": "Pois", "coef": 233},
+        {"name": "Colza", "coef": 381},
+        {"name": "Soja", "coef": 526},
+        {"name": "CaCo3", "coef": 0},
+        {"name": "PhMoBica", "coef": 0},
+        {"name": "S_MAT", "coef": -1}
+      ],
+      "bnds": { "type": 5,  "lb": 0,  "ub": 0}
+    },
+    {
+      "name": "c8_NDF",
+      "vars": [
+        {"name": "Ens_Mais", "coef": 412.8635663},
+        {"name": "Ens_Herbe", "coef": 562.0684447},
+        {"name": "Paille_Ble", "coef": 798},
+        {"name": "Mais", "coef": 125},
+        {"name": "Orge", "coef": 215},
+        {"name": "Ble", "coef": 149},
+        {"name": "Pois", "coef": 145},
+        {"name": "Colza", "coef": 316},
+        {"name": "Soja", "coef": 142},
+        {"name": "CaCo3", "coef": 0},
+        {"name": "PhMoBica", "coef": 0},
+        {"name": "S_NDF", "coef": -1}
+      ],
+      "bnds": { "type": 5,  "lb": 0,  "ub": 0}
+    },
+    {
+      "name": "c9_NDFfourr",
+      "vars": [
+        {"name": "Ens_Mais", "coef": 412.8635663},
+        {"name": "Ens_Herbe", "coef": 562.0684447},
+        {"name": "Paille_Ble", "coef": 798},
+        {"name": "Mais", "coef": 0},
+        {"name": "Orge", "coef": 0},
+        {"name": "Ble", "coef": 0},
+        {"name": "Pois", "coef": 0},
+        {"name": "Colza", "coef": 0},
+        {"name": "Soja", "coef": 0},
+        {"name": "CaCo3", "coef": 0},
+        {"name": "PhMoBica", "coef": 0},
+        {"name": "S_NDFf", "coef": -1}
+      ],
+      "bnds": { "type": 5,  "lb": 0,  "ub": 0}
+    },
+    {
+      "name": "c10_AGT",
+      "vars": [
+        {"name": "Ens_Mais", "coef": 24},
+        {"name": "Ens_Herbe", "coef": 14.845112},
+        {"name": "Paille_Ble", "coef": 7},
+        {"name": "Mais", "coef": 43},
+        {"name": "Orge", "coef": 15},
+        {"name": "Ble", "coef": 12},
+        {"name": "Pois", "coef": 11},
+        {"name": "Colza", "coef": 19},
+        {"name": "Soja", "coef": 13},
+        {"name": "CaCo3", "coef": 0},
+        {"name": "PhMoBica", "coef": 0},
+        {"name": "S_AGT", "coef": -1}
+      ],
+      "bnds": { "type": 5,  "lb": 0,  "ub": 0}
+    },
+    {
+      "name": "c11_AMI",
+      "vars": [
+        {"name": "Ens_Mais", "coef": 282.2767554},
+        {"name": "Ens_Herbe", "coef": 0},
+        {"name": "Paille_Ble", "coef": 0},
+        {"name": "Mais", "coef": 739},
+        {"name": "Orge", "coef": 600},
+        {"name": "Ble", "coef": 691},
+        {"name": "Pois", "coef": 513},
+        {"name": "Colza", "coef": 62},
+        {"name": "Soja", "coef": 57},
+        {"name": "CaCo3", "coef": 0},
+        {"name": "PhMoBica", "coef": 0},
+        {"name": "S_AMI", "coef": -1}
+      ],
+      "bnds": { "type": 5,  "lb": 0,  "ub": 0}
+    },
+    {
+      "name": "c5_Caabs",
+      "vars": [
+        {"name": "Ens_Mais", "coef": 0.8},
+        {"name": "Ens_Herbe", "coef": 2.20395},
+        {"name": "Paille_Ble", "coef": 0.899999976},
+        {"name": "Mais", "coef": 0.200000003},
+        {"name": "Orge", "coef": 0.400000006},
+        {"name": "Ble", "coef": 0.400000006},
+        {"name": "Pois", "coef": 0.699999988},
+        {"name": "Colza", "coef": 4.699999809},
+        {"name": "Soja", "coef": 2.099999905},
+        {"name": "CaCo3", "coef": 138.7},
+        {"name": "PhMoBica", "coef": 94.0}
+      ],
+      "bnds": { "type": 4,  "lb": 52.5349073383068,  "ub": 999999}
+    },
+    {
+      "name": "c6_Pabs",
+      "vars": [
+        {"name": "Ens_Mais", "coef": 1.26},
+        {"name": "Ens_Herbe", "coef": 1.90248885},
+        {"name": "Paille_Ble", "coef": 6.699999809},
+        {"name": "Mais", "coef": 2.200000048},
+        {"name": "Orge", "coef": 2.900000095},
+        {"name": "Ble", "coef": 2.599999905},
+        {"name": "Pois", "coef": 3.200000048},
+        {"name": "Colza", "coef": 9.0},
+        {"name": "Soja", "coef": 4.900000095},
+        {"name": "CaCo3", "coef": 0},
+        {"name": "PhMoBica", "coef": 134}
+      ],
+      "bnds": { "type": 4,  "lb": 41.6893355892832,  "ub": 999999}
+    },
+    {
+      "name": "c12_MSfourr",
+      "vars": [
+        {"name": "Ens_Mais", "coef": 1},
+        {"name": "Ens_Herbe", "coef": 1},
+        {"name": "Paille_Ble", "coef": 1},
+        {"name": "Mais", "coef": 0},
+        {"name": "Orge", "coef": 0},
+        {"name": "Ble", "coef": 0},
+        {"name": "Pois", "coef": 0},
+        {"name": "Colza", "coef": 0},
+        {"name": "Soja", "coef": 0},
+        {"name": "CaCo3", "coef": 0},
+        {"name": "PhMoBica", "coef": 0},
+        {"name": "MSF", "coef": -1}
+      ],
+      "bnds": { "type": 5,  "lb": 0,  "ub": 0}
+    },
+    {
+      "name": "c13_MSconc",
+      "vars": [
+        {"name": "Ens_Mais", "coef": 0},
+        {"name": "Ens_Herbe", "coef": 0},
+        {"name": "Paille_Ble", "coef": 0},
+        {"name": "Mais", "coef": 1},
+        {"name": "Orge", "coef": 1},
+        {"name": "Ble", "coef": 1},
+        {"name": "Pois", "coef": 1},
+        {"name": "Colza", "coef": 1},
+        {"name": "Soja", "coef": 1},
+        {"name": "CaCo3", "coef": 1},
+        {"name": "PhMoBica", "coef": 1},
+        {"name": "MSC", "coef": -1}
+      ],
+      "bnds": { "type": 5,  "lb": 0,  "ub": 0}
+    },
+    {
+      "name": "c14_MStot",
+      "vars": [
+        {"name": "MSF", "coef": 1},
+        {"name": "MSC", "coef": 1},
+        {"name": "MST", "coef": -1}
+      ],
+      "bnds": { "type": 5,  "lb": 0,  "ub": 0}
+    },
+    {
+      "name": "c15_prctconc",
+      "vars": [
+        {"name": "MSC", "coef": 1},
+        {"name": "MST", "coef": -0.60}
+      ],
+      "bnds": { "type": 4,  "lb": -999999,  "ub": 0}
+    },
+    {
+      "name": "c16_minBPR",
+      "vars": [
+        {"name": "MST", "coef": -50},
+        {"name": "S_BPR", "coef": -1}
+      ],
+      "bnds": { "type": 4,  "lb": -999999,  "ub": 0}
+    },
+    {
+      "name": "c17_maxBPR",
+      "vars": [
+        {"name": "MST", "coef": 100},
+        {"name": "S_BPR", "coef": -1}
+      ],
+      "bnds": { "type": 4,  "lb": 0,  "ub": 999999}
+    },
+    {
+      "name": "c18_minMAT",
+      "vars": [
+        {"name": "MST", "coef": 140},
+        {"name": "S_MAT", "coef": -1}
+      ],
+      "bnds": { "type": 4,  "lb": -999999,  "ub": 0}
+    },
+    {
+      "name": "c19_maxMAT",
+      "vars": [
+        {"name": "MST", "coef": 9999},
+        {"name": "S_MAT", "coef": -1}
+      ],
+      "bnds": { "type": 4,  "lb": 0,  "ub": 999999}
+    },
+    {
+      "name": "c20_minNDF",
+      "vars": [
+        {"name": "MST", "coef": 0},
+        {"name": "S_NDF", "coef": -1}
+      ],
+      "bnds": { "type": 4,  "lb": -999999,  "ub": 0}
+    },
+    {
+      "name": "c21_maxNDF",
+      "vars": [
+        {"name": "MST", "coef": 9999},
+        {"name": "S_NDF", "coef": -1}
+      ],
+      "bnds": { "type": 4,  "lb": 0,  "ub": 999999}
+    },
+    {
+      "name": "c22_minNDFf",
+      "vars": [
+        {"name": "MST", "coef": 300},
+        {"name": "S_NDFf", "coef": -1}
+      ],
+      "bnds": { "type": 4,  "lb": -999999,  "ub": 0}
+    },
+    {
+      "name": "c23_maxNDFf",
+      "vars": [
+        {"name": "MST", "coef": 9999},
+        {"name": "S_NDFf", "coef": -1}
+      ],
+      "bnds": { "type": 4,  "lb": 0,  "ub": 999999}
+    },
+    {
+      "name": "c24_minAGT",
+      "vars": [
+        {"name": "MST", "coef": 0},
+        {"name": "S_AGT", "coef": -1}
+      ],
+      "bnds": { "type": 4,  "lb": -999999,  "ub": 0}
+    },
+    {
+      "name": "c25_maxAGT",
+      "vars": [
+        {"name": "MST", "coef": 9999},
+        {"name": "S_AGT", "coef": -1}
+      ],
+      "bnds": { "type": 4,  "lb": 0,  "ub": 999999}
+    },
+    {
+      "name": "c26_minAMI",
+      "vars": [
+        {"name": "MST", "coef": 0},
+        {"name": "S_AMI", "coef": -1}
+      ],
+      "bnds": { "type": 4,  "lb": -999999,  "ub": 0}
+    },
+    {
+      "name": "c27_maxAMI",
+      "vars": [
+        {"name": "MST", "coef": 300},
+        {"name": "S_AMI", "coef": -1}
+      ],
+      "bnds": { "type": 4,  "lb": 0,  "ub": 999999}
+    },
+    {
+      "name": "c28_Dep_Tract",
+      "vars": [
+        {"name": "Ens_Mais", "coef": 1},
+        {"name": "Ens_Herbe", "coef": 1},
+        {"name": "Paille_Ble", "coef": 0},
+        {"name": "Mais", "coef": 1},
+        {"name": "Orge", "coef": 1},
+        {"name": "Ble", "coef": 1}
+      ],
+      "bnds": { "type": 4,  "lb": 0,  "ub": 999999}
+    },
+    {
+      "name": "c29_Dep_Camion",
+      "vars": [
+        {"name": "Paille_Ble", "coef": 1},
+        {"name": "Pois", "coef": 1},
+        {"name": "CaCo3", "coef": 1},
+        {"name": "PhMoBica", "coef": 1}
+      ],
+      "bnds": { "type": 4,  "lb": 0,  "ub": 999999}
+    },
+    {
+      "name": "c30_Dep_Train",
+      "vars": [
+        {"name": "Colza", "coef": 1}
+      ],
+      "bnds": { "type": 4,  "lb": 0,  "ub": 999999}
+    },
+    {
+      "name": "c31-Dep_Bateau",
+      "vars": [
+        {"name": "Soja", "coef": 1}
+      ],
+      "bnds": { "type": 4,  "lb": 0,  "ub": 999999}
+    },
+    {
+      "name": "c32_Dep_Glob_MS",
+      "vars": [
+        {"name": "Ens_Mais", "coef": 1},
+        {"name": "Ens_Herbe", "coef": 1},
+        {"name": "Paille_Ble", "coef": 2},
+        {"name": "Mais", "coef": 1},
+        {"name": "Orge", "coef": 1},
+        {"name": "Ble", "coef": 1},
+        {"name": "Pois", "coef": 2},
+        {"name": "Colza", "coef": 3},
+        {"name": "Soja", "coef": 4},
+        {"name": "CaCo3", "coef": 2},
+        {"name": "PhMoBica", "coef": 2}
+      ],
+      "bnds": { "type": 4,  "lb": 0,  "ub": 999999}
+    },
+    {
+      "name": "c33_Dep_Glob_MAT",
+      "vars": [
+        {"name": "Ens_Mais", "coef": 78.29302259},
+        {"name": "Ens_Herbe", "coef": 134.2917636},
+        {"name": "Paille_Ble", "coef": 70},
+        {"name": "Mais", "coef": 89},
+        {"name": "Orge", "coef": 112},
+        {"name": "Ble", "coef": 126},
+        {"name": "Pois", "coef": 466},
+        {"name": "Colza", "coef": 1143},
+        {"name": "Soja", "coef": 2140},
+        {"name": "CaCo3", "coef": 0},
+        {"name": "PhMoBica", "coef": 0}
+      ],
+      "bnds": { "type": 4,  "lb": 0,  "ub": 999999}
+    },
+    {
+      "name": "c34_Dep_Glob_DPI",
+      "vars": [
+        {"name": "Ens_Mais", "coef": 64.1337504137345},
+        {"name": "Ens_Herbe", "coef": 82.1172446533567},
+        {"name": "Paille_Ble", "coef": 102.333326840286},
+        {"name": "Mais", "coef": 97.8744080320921},
+        {"name": "Orge", "coef": 90.6150097082653},
+        {"name": "Ble", "coef": 93.6246188226264},
+        {"name": "Pois", "coef": 206.44535240865},
+        {"name": "Colza", "coef": 472.266888024477},
+        {"name": "Soja", "coef": 1025.27729987056},
+        {"name": "CaCo3", "coef": 0},
+        {"name": "PhMoBica", "coef": 0}
+      ],
+      "bnds": { "type": 4,  "lb": 0,  "ub": 999999}
+    },
+    {
+      "name": "c35_Prix",
+      "vars": [
+        {"name": "Ens_Mais", "coef": 150},
+        {"name": "Ens_Herbe", "coef": 220},
+        {"name": "Paille_Ble", "coef": 100},
+        {"name": "Mais", "coef": 300},
+        {"name": "Orge", "coef": 225},
+        {"name": "Ble", "coef": 225},
+        {"name": "Pois", "coef": 300},
+        {"name": "Colza", "coef": 290},
+        {"name": "Soja","coef": 400},
+        {"name": "CaCo3","coef": 50},
+        {"name": "PhMoBica","coef": 500}
+      ],
+      "bnds": { "type": 4,  "lb": 0,  "ub": 999999}
+    }
+  ],
+  "bounds": [
+    { "name": "Ens_Mais", "type": 4,  "lb": 0,  "ub": 999},
+    { "name": "Ens_Herbe", "type": 4,  "lb": 3,  "ub": 999},
+    { "name": "Paille_Ble", "type": 4,  "lb": 0,  "ub": 999},
+    { "name": "Mais", "type": 4,  "lb": 0,  "ub": 999},
+    { "name": "Orge", "type": 4,  "lb": 0,  "ub": 999},
+    { "name": "Ble", "type": 4,  "lb": 0,  "ub": 999},
+    { "name": "Pois", "type": 4,  "lb": 0,  "ub": 999},
+    { "name": "Colza", "type": 4,  "lb": 0,  "ub": 999},
+    { "name": "Soja", "type": 4,  "lb": 0,  "ub": 999},
+    { "name": "CaCo3", "type": 4,  "lb": 0,  "ub": 999},
+    { "name": "PhMoBica", "type": 4,  "lb": 0,  "ub": 999},
+    { "name": "MSF", "type": 4,  "lb": 0,  "ub": 999},
+    { "name": "MSC", "type": 4,  "lb": 0,  "ub": 12},
+    { "name": "MST", "type": 4,  "lb": 0,  "ub": 999},
+    { "name": "S_BPR", "type": 4,  "lb": -1082.94298834106,  "ub": 2164.88597668211},
+    { "name": "S_MAT", "type": 4,  "lb": 3028.44036735496,  "ub": 216367.958808444},
+    { "name": "S_NDF", "type": 4,  "lb": -1,  "ub": 216367.958808444},
+    { "name": "S_NDFf", "type": 4,  "lb": 6490.65793004634,  "ub": 216367.958808444},
+    { "name": "S_AGT", "type": 4,  "lb": -1,  "ub": 216367.958808444},
+    { "name": "S_AMI", "type": 4,  "lb": -1,  "ub": 6492.65793004634}
+  ]
+}

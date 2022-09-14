@@ -8,44 +8,26 @@
     <body>
         <script type="module">
             import GLPK from '../dist/index.js';
+            //import data from '../test/data/modele_test.json' assert {type: 'json'};
+            // import data from '../test/data/test_1.json' assert {type: 'json'};
+             import data from '../test/data/test_2.json' assert {type: 'json'};
+            // import data from '../test/data/test_3.json' assert {type: 'json'};
+            // import data from '../test/data/test_4.json' assert {type: 'json'};
+            // import data from '../test/data/test_5.json' assert {type: 'json'};
+            //import data from '../test/data/test_6.json' assert {type: 'json'};
+            //import data from '../test/data/mip.json' assert {type: 'json'};
+
             (async () => {
 
                 const glpk = await GLPK();
 
                 function print(res) {
+                    console.log("print :",  res);
                     const el = window.document.getElementById('out');
                     el.innerHTML = JSON.stringify(res, null, 2);
                 };
 
-                const lp = {
-                    name: 'LP',
-                    objective: {
-                        direction: glpk.GLP_MAX,
-                        name: 'obj',
-                        vars: [
-                            { name: 'x1', coef: 0.6 },
-                            { name: 'x2', coef: 0.5 }
-                        ]
-                    },
-                    subjectTo: [
-                        {
-                        name: 'cons1',
-                            vars: [
-                                { name: 'x1', coef: 1.0 },
-                                { name: 'x2', coef: 2.0 }
-                            ],
-                            bnds: { type: glpk.GLP_UP, ub: 1.0, lb: 0.0 }
-                        },
-                        {
-                            name: 'cons2',
-                            vars: [
-                                { name: 'x1', coef: 3.0 },
-                                { name: 'x2', coef: 1.0 }
-                            ],
-                            bnds: { type: glpk.GLP_UP, ub: 2.0, lb: 0.0 }
-                        }
-                    ]
-                };
+                const lp = data;
 
                 const opt = {
                     msglev: glpk.GLP_MSG_OFF,
@@ -59,13 +41,19 @@
                     .then(res => print(res))
                     .catch(err => console.log(err));
 
-                console.log(await glpk.solve(lp, glpk.GLP_MSG_DBG));
-
+                let res = await  glpk.solve(lp, glpk.GLP_MSG_DBG);
+                let res_text = res.result.sens_text;
+                delete res.result.sens_text;
+                let result = JSON.stringify(res, null, 2);
+                console.log(result);
+                window.document.getElementById('out').innerHTML = result;
+                window.document.getElementById('sens').innerHTML = res_text;
                 window.document.getElementById('cplex').innerHTML = await glpk.write(lp);
 
             })();
         </script>
         <pre id='out'></pre>
+        <pre id='sens'></pre>
         <pre id='cplex'></pre>
     </body>
 </html>
